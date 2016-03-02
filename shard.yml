@@ -1,0 +1,15 @@
+name: kemal-blog
+version: 0.1.0
+
+dependencies:
+  kemal:
+    github: sdogruyol/kemal
+    version: 0.9.3
+  kemal-mysql:
+    github: sdogruyol/kemal-mysql
+    branch: master
+
+authors:
+  - Sdogruyol <dogruyolserdar@gmail.com>
+
+license: MIT
