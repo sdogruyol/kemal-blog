@@ -80,12 +80,8 @@ h1, h2, h3, h4, h5, h6 {
 .form-button {
   font-weight: bold;
   border: 0;
-  background-color: #EDA;
+  background-color: yellow;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-}
-
-.form-button:hover {
-  background-color: #F5E9C5;
 }
 
 .form-button:active {
