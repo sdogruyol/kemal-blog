@@ -1,5 +1,8 @@
-<a class="breadcumbs" href="/articles/<%= article[0] %>">← Back</a>
-<h1>Edit Post (#<%= article[0] %>)</h1>
+<a class="breadcumbs" href="/articles/">← Back</a>
+
+<header class="page-header">
+  <h1>Edit Post <span>#<%= article[0] %></span></h1>
+</header>
 
 <form method="post" action="/articles/<%= article[0] %>">
   <input type="hidden" name="_method" value="patch"/>
@@ -10,7 +13,7 @@
     </li>
     <li>
       <label class="form-label" for="">Body</label>
-      <textarea class="form-input" name="body" rows="4"><%= article[2] %></textarea>
+      <textarea class="form-input" name="body" rows="6"><%= article[2] %></textarea>
     </li>
     <li>
       <button role="submit" class="form-button">Save and Show</button>

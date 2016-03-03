@@ -1,19 +1,25 @@
-<h1> All Articles </h1>
-<a href="/articles/new">New article</a>
-asdasdd
-<hr>
+<header class="page-header">
+  <h1>All articles</h1>
+  <a class="new-article" href="/articles/new">New Article</a>
+</header>
+
 
 <% if articles %>
-  <% articles.each do |article| %>
-  <article>
-    <h4><a href="/articles/<%=article[0]%>"><%= article[1] %></a></h4>
-    <div class="meta">
-      <a href="/articles/<%=article[0]%>/edit">Edit</a>
-      <form action="/articles/<%=article[0]%>" method="post">
-        <input type="hidden" name="_method" value="delete"/>
-        <button role="submit">Destroy</button>
-      </form>
-    </div>
-  </article>
-  <% end %>
+<% articles.each do |article| %>
+
+<article>
+  <h4><a href="/articles/<%=article[0]%>"><%= article[1] %></a></h4>
+  <p><%= article[2] %></p>
+
+  <div class="meta">
+    <a href="/articles/<%=article[0]%>/edit">Edit</a>
+    <form action="/articles/<%=article[0]%>" method="post" onsubmit="return confirm('Do you really want to delete the post?');">
+      <input type="hidden" name="_method" value="delete"/>
+      <button role="submit">Destroy</button>
+    </form>
+  </div>
+
+</article>
+
+<% end %>
 <% end %>
