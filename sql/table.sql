@@ -2,8 +2,8 @@
 -- users
 CREATE TABLE `articles` (
   `id`        INTEGER        NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `title`     VARCHAR(256)   NOT NULL,
-  `body`      VARCHAR(256)   NOT NULL,
+  `title`     VARCHAR(1000)   NOT NULL,
+  `body`      VARCHAR(1000)   NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

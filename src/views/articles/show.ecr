@@ -1,7 +1,10 @@
+<a class="breadcumbs" href="/">← Home</a>
+
 <% if article %>
+  <header class="page-header">
+    <h1><%= article[1] %></h1>
+  </header>
     <p>
-      <span>Title: <%= article[1] %></span>
-      <span>Body: <%= article[2] %></span>
+    <%= article[2] %>
     </p>
-    <a href="/">Back</a>
 <% end %>
