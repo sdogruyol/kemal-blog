@@ -35,9 +35,34 @@ get "/articles/:id" do |env|
   render "src/views/articles/show.ecr"
 end
 
+# Edit article
+get "/articles/:id/edit" do |env|
+  id = env.params["id"]
+  article = conn.query "SELECT * FROM articles WHERE articles.id=#{id} LIMIT 1"
+  article = article.not_nil!.first
+  render "src/views/articles/edit.ecr"
+end
+
+# Create new article
 post "/articles" do |env|
   title = env.params["title"] as String
   body = env.params["body"] as String
   conn.query "INSERT INTO articles(title, body) VALUES ('#{title}', '#{body}')"
+  env.redirect "/articles"
+end
+
+# Update article
+patch "/articles/:id" do |env|
+  id = env.params["id"]
+  title = env.params["title"] as String
+  body = env.params["body"] as String
+  conn.query "UPDATE articles SET title='#{title}', body='#{body}' WHERE articles.id=#{id}"
+  env.redirect "/articles"
+end
+
+# Delete article
+delete "/articles/:id" do |env|
+  id = env.params["id"]
+  conn.query "DELETE FROM articles WHERE articles.id=#{id}"
   env.redirect "/articles"
 end
