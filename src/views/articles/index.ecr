@@ -1,20 +1,19 @@
 <h1> All Articles </h1>
+<a href="/articles/new">New article</a>
+asdasdd
+<hr>
+
 <% if articles %>
   <% articles.each do |article| %>
-    <p>
-      <span>Title: <%= article[1] %></span>
-      <span>Body: <%= article[2] %></span>
-      <span><a href="/articles/<%=article[0]%>">Show</a></span>
-      <span><a href="/articles/<%=article[0]%>/edit">Edit</a></span>
-      <span>
-        <form action="/articles/<%=article[0]%>" method="post">
-          <button role="submit"> Destroy </button>
-          <input type="hidden" name="_method" value="delete"/>
-        </form>
-      </span>
-    </p>
-
+  <article>
+    <h4><a href="/articles/<%=article[0]%>"><%= article[1] %></a></h4>
+    <div class="meta">
+      <a href="/articles/<%=article[0]%>/edit">Edit</a>
+      <form action="/articles/<%=article[0]%>" method="post">
+        <input type="hidden" name="_method" value="delete"/>
+        <button role="submit">Destroy</button>
+      </form>
+    </div>
+  </article>
   <% end %>
 <% end %>
-
-<a href="/articles/new">New article</a>

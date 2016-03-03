@@ -2,6 +2,8 @@ require "./kemal-blog/*"
 require "kemal"
 require "kemal-mysql"
 
+public_folder "src/public"
+
 CONN_OPTS = {
   "host" => "127.0.0.1",
   "user" => "root",
@@ -18,13 +20,13 @@ end
 
 # New article form
 get "/articles/new" do |env|
-  render "src/views/articles/new.ecr"
+  render "src/views/articles/new.ecr", "src/views/layouts/layout.ecr"
 end
 
 # Lists all articles
 get "/articles" do |env|
   articles = conn.query "SELECT * FROM articles"
-  render "src/views/articles/index.ecr"
+  render "src/views/articles/index.ecr", "src/views/layouts/layout.ecr"
 end
 
 # Show Article with given id
@@ -32,7 +34,7 @@ get "/articles/:id" do |env|
   id = env.params["id"]
   article = conn.query "SELECT * FROM articles WHERE articles.id=#{id} LIMIT 1"
   article = article.not_nil!.first
-  render "src/views/articles/show.ecr"
+  render "src/views/articles/show.ecr", "src/views/layouts/layout.ecr"
 end
 
 # Edit article
@@ -40,7 +42,7 @@ get "/articles/:id/edit" do |env|
   id = env.params["id"]
   article = conn.query "SELECT * FROM articles WHERE articles.id=#{id} LIMIT 1"
   article = article.not_nil!.first
-  render "src/views/articles/edit.ecr"
+  render "src/views/articles/edit.ecr", "src/views/layouts/layout.ecr"
 end
 
 # Create new article
